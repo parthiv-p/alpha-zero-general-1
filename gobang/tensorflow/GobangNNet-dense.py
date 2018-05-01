@@ -109,59 +109,7 @@ class GobangNNet():
 
         return pool1
     
-    
-def dense_block(features):
-
-    #convolutional layer 2
-    conv1= features
-    conv2= tf.layers.conv2d(inputs= conv1,
-                            filters=12,
-                            kernel_size=[3,3],
-                           padding="same",
-                           activation=tf.nn.relu)
-    
-    #concatenation   
-    concat1= tf.concat([conv1,conv2],-1)
-    
-    # conv layer 3
-    
-    conv3a= tf.layers.conv2d(inputs= conv2, filters=12*4, kernel_size=[1,1],
-                         padding="same", activation=tf.nn.relu)
-    
-    conv3= tf.layers.conv2d(inputs= conv3a, filters=12, kernel_size=[3,3],
-                         padding="same", activation=tf.nn.relu)
-
-    #concatenation
-    concat2= tf.concat([concat1, conv3], -1) 
-
-    # conv layer 3
-    
-    conv4a= tf.layers.conv2d(inputs= concat2, filters=12*4, kernel_size=[1,1],
-                         padding="same", activation=tf.nn.relu)
-    
-    conv4= tf.layers.conv2d(inputs= conv4a, filters=12, kernel_size=[3,3],
-                         padding="same", activation=tf.nn.relu)
-
-    #concatenation
-    concat3= tf.concat([concat2, conv4], -1) 
-    return concat3
-    
-
-    
-def transition_layer(features):
-        # conv layer 1
-    
-    conv1= tf.layers.conv2d(inputs= features,
-                            filters=int(features.shape[-1]),
-                            kernel_size=[5,5],
-                           padding="same",
-                           activation=tf.nn.relu)
-    
-    pool1= tf.layers.max_pooling2d(inputs= conv1, pool_size=[2,2], strides=2)
-    
-    return pool1
-    
-    
+   
 
 
     def calculate_loss(self):
