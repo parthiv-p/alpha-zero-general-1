@@ -43,14 +43,14 @@ class GobangNNet():
 
                 conv1a= outputs
                 conv2= tf.layers.conv2d(inputs= conv1a,
-                                    filters=fltr,
+                                    filters=fltrs,
                                     kernel_size=[3,3], strides=2)
 
                 batchnorm2= tf.layes.batch_normalization(conv2)
                 relu2 = tf.nn.relu(batchnorm2, name=None)
 
                 conv3= tf.layers.conv2d(inputs= relu2,
-                                    filters=fltr,
+                                    filters=fltrs,
                                     kernel_size=[3,3],
                                    padding="same")
                 batchnorm3= tf.layes.batch_normalization(conv3)
