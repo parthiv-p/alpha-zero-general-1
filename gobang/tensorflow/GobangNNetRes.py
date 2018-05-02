@@ -63,7 +63,7 @@ class GobangNNet():
 
 
             # fully connected layers
-            h_conv4_flat= tf.reshape(conv1a, [-1,int(conv1a.shape[-1])*int(conv1a.shape[-2])*int(conv1a.shape[-3])])
+            h_conv4_flat= tf.contrib.layers.flatten(conv1a)
             
 
             s_fc1 = Dropout(Relu(BatchNormalization(Dense(h_conv4_flat, 1024), axis=1, training=self.isTraining)), rate=self.dropout) # batch_size x 1024
