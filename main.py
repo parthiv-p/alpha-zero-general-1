@@ -1,10 +1,10 @@
 from Coach import Coach
-from gobang.GobangGame import GobangGame as Game
-from gobang.tensorflow.NNet import NNetWrapper as nn
+from othello.OthelloGame import OthelloGame as Game
+from othello.tensorflow.NNet import NNetWrapper as nn
 from utils import *
 
 args = dotdict({
-    'numIters': 1000,
+    'numIters': 80,
     'numEps': 100,
     'tempThreshold': 15,
     'updateThreshold': 0.6,
@@ -21,7 +21,7 @@ args = dotdict({
 })
 
 if __name__=="__main__":
-    g = Game(6)
+    g = Game(8)
     nnet = nn(g)
 
     if args.load_model:
