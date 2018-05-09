@@ -1,10 +1,10 @@
 from Coach import Coach
-from othello.OthelloGame import OthelloGame as Game
-from othello.tensorflow.NNet import NNetWrapper as nn
+from connect4Team15.ConnectFourGame import ConnectFourGame as Game
+from connect4Team15.keras.NNet import NNetWrapper as nn
 from utils import *
 
 args = dotdict({
-    'numIters': 80,
+    'numIters': 20,
     'numEps': 100,
     'tempThreshold': 15,
     'updateThreshold': 0.6,
@@ -13,7 +13,7 @@ args = dotdict({
     'arenaCompare': 40,
     'cpuct': 1,
 
-    'checkpoint': './temp/',
+    'checkpoint': './temp-c4/',
     'load_model': False,
     'load_folder_file': ('/dev/models/8x100x50','best.pth.tar'),
     'numItersForTrainExamplesHistory': 20,
@@ -21,7 +21,7 @@ args = dotdict({
 })
 
 if __name__=="__main__":
-    g = Game(8)
+    g = Game()
     nnet = nn(g)
 
     if args.load_model:
